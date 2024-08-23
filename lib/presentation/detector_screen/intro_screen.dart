@@ -13,12 +13,9 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     Future.delayed(
       const Duration(seconds: 3),
-      () => Get.to(
-        () => const DetectorScreen(),
-      ),
+      () => Get.to(() => const DetectorScreen()),
     );
     super.initState();
   }
@@ -28,7 +25,33 @@ class _IntroScreenState extends State<IntroScreen> {
     return const Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
-        child: Text("Let's Hunt!"),
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    "Let's Hunt!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                    ),
+                  ),
+                ),
+                Text('the machine is preparing for you..'),
+              ],
+            ),
+            SizedBox(height: 20.0),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(child: CircularProgressIndicator()),
+                SizedBox(height: 36.0),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

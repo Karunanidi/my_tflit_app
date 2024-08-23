@@ -87,7 +87,7 @@ class _DetectorScreenState extends State<DetectorScreen> {
                                 borderRadius: BorderRadius.circular(12),
                                 image: imageController.filePath.value == null
                                     ? const DecorationImage(
-                                        image: AssetImage('assets/upload.jpg'),
+                                        image: AssetImage('assets/ic_add_image.png'),
                                         fit: BoxFit.cover,
                                       )
                                     : null,

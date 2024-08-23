@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_tflit_app/core/utils/appcolors.dart';
 import 'package:my_tflit_app/core/utils/constant.dart';
-import 'package:my_tflit_app/presentation/detector_screen/detector_screen.dart';
 import 'package:my_tflit_app/presentation/home_page_screen/home_page_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -119,7 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 );
                               },
                               child: const Text(
-                                'Start',
+                                'Get Started',
                                 style: TextStyle(
                                   color: AppColors.white,
                                 ),
