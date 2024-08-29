@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_tflit_app/core/utils/appcolors.dart';
@@ -10,6 +11,11 @@ import 'package:my_tflit_app/presentation/onboardning_screen/onboarding_screen.d
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await PreferenceUtils.init();
   DartPluginRegistrant.ensureInitialized();
   Get.put(ImageController());
@@ -32,3 +38,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+

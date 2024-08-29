@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_tflit_app/core/utils/appcolors.dart';
 import 'package:my_tflit_app/presentation/detector_screen/detector_screen.dart';
+import 'package:my_tflit_app/presentation/detector_screen/hunt_screen.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -15,7 +16,7 @@ class _IntroScreenState extends State<IntroScreen> {
   void initState() {
     Future.delayed(
       const Duration(seconds: 3),
-      () => Get.to(() => const DetectorScreen()),
+      () => Get.to(() => const HuntScreen()),
     );
     super.initState();
   }

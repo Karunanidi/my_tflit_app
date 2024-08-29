@@ -20,17 +20,30 @@ class _ScoreScreenState extends State<ScoreScreen> {
     super.initState();
   }
 
+   _onPop(didpop) {
+    if (didpop) {
+      return;
+    }
+    Get.offAll(() => const HomePageScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Get.to(() => const HomePageScreen());
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didpop) {
+        _onPop(didpop);
       },
-      child: Scaffold(
-        body: Center(
-          child: Obx(() {
-            return Text('Your score: ${controller.score.value}');
-          }),
+      child: GestureDetector(
+        onTap: () {
+          Get.to(() => const HomePageScreen());
+        },
+        child: Scaffold(
+          body: Center(
+            child: Obx(() {
+              return Text('Your score: ${controller.score.value}');
+            }),
+          ),
         ),
       ),
     );

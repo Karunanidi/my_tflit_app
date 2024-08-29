@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_tflit_app/core/utils/appcolors.dart';
 import 'package:my_tflit_app/core/utils/constant.dart';
+import 'package:my_tflit_app/core/utils/permission_helper.dart';
 import 'package:my_tflit_app/presentation/home_page_screen/home_page_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -16,6 +18,16 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController = PageController();
   final ValueNotifier<bool> onLastPage = ValueNotifier<bool>(false);
+
+  Future<void> _handlePermissionRequest() async {
+    await PermissionsHelper.requestMediaPermissions();
+  }
+
+  @override
+  void initState()  {
+    _handlePermissionRequest();
+    super.initState();
+  }
 
   @override
   void dispose() {
