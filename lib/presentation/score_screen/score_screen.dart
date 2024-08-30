@@ -1,11 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_tflit_app/presentation/home_page_screen/home_page_screen.dart';
 import 'package:my_tflit_app/presentation/score_screen/controller/score_controller.dart';
 
 class ScoreScreen extends StatefulWidget {
-  const ScoreScreen({super.key, required this.isCorrect});
-  final bool isCorrect;
+  const ScoreScreen({super.key});
 
   @override
   State<ScoreScreen> createState() => _ScoreScreenState();
@@ -13,14 +14,32 @@ class ScoreScreen extends StatefulWidget {
 
 class _ScoreScreenState extends State<ScoreScreen> {
   final ScoreController controller = Get.put(ScoreController());
+  final Rx<Color> _textColor = Colors.black.obs;
 
   @override
   void initState() {
-    controller.updateScore(widget.isCorrect);
     super.initState();
+    _showFlashingText();
   }
 
-   _onPop(didpop) {
+  void _showFlashingText() {
+    _textColor.value = Colors.green;
+    Timer.periodic(const Duration(milliseconds: 500), (timer) {
+      if (timer.tick > 5) {
+        timer.cancel();
+        _textColor.value = Colors.black;
+      } else {
+        _textColor.value =
+            _textColor.value == Colors.black ? (Colors.green) : Colors.black;
+      }
+    });
+
+    Future.delayed(const Duration(seconds: 5), () {
+      Get.to(() => const HomePageScreen());
+    });
+  }
+
+  _onPop(didpop) {
     if (didpop) {
       return;
     }
@@ -41,7 +60,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
         child: Scaffold(
           body: Center(
             child: Obx(() {
-              return Text('Your score: ${controller.score.value}');
+              return Text(
+                'Your score: ${controller.score.value}',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: _textColor.value),
+              );
             }),
           ),
         ),

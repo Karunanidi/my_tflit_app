@@ -39,7 +39,7 @@ class CorrectDialog extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Get.offAll(
-                        () => ScoreScreen(isCorrect: isCorrect),
+                        () => const ScoreScreen(),
                       );
                     },
                     child: const Text('continue'),

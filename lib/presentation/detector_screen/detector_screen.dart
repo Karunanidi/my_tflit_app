@@ -123,37 +123,37 @@ class _DetectorScreenState extends State<DetectorScreen> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () => imageController.pickImage(
-                          ImageSource.camera, _randomFruit.value),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 10,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                        foregroundColor: Colors.black,
-                      ),
-                      child: const Text("Take a Photo"),
-                    ),
+                    // ElevatedButton(
+                    //   onPressed: () => imageController.pickImage(
+                    //       ImageSource.camera, _randomFruit.value),
+                    //   style: ElevatedButton.styleFrom(
+                    //     padding: const EdgeInsets.symmetric(
+                    //       horizontal: 30,
+                    //       vertical: 10,
+                    //     ),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(13),
+                    //     ),
+                    //     foregroundColor: Colors.black,
+                    //   ),
+                    //   child: const Text("Take a Photo"),
+                    // ),
                     const SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () => imageController.pickImage(
-                          ImageSource.gallery, _randomFruit.value),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 10,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                        foregroundColor: Colors.black,
-                      ),
-                      child: const Text("Pick from gallery"),
-                    ),
+                    // ElevatedButton(
+                    //   onPressed: () => imageController.pickImage(
+                    //       ImageSource.gallery, _randomFruit.value),
+                    //   style: ElevatedButton.styleFrom(
+                    //     padding: const EdgeInsets.symmetric(
+                    //       horizontal: 30,
+                    //       vertical: 10,
+                    //     ),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(13),
+                    //     ),
+                    //     foregroundColor: Colors.black,
+                    //   ),
+                    //   child: const Text("Pick from gallery"),
+                    // ),
                   ],
                 ),
               ),

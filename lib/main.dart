@@ -8,6 +8,7 @@ import 'package:my_tflit_app/core/utils/appcolors.dart';
 import 'package:my_tflit_app/core/utils/preferences_utils.dart';
 import 'package:my_tflit_app/presentation/detector_screen/controller/image_controller.dart';
 import 'package:my_tflit_app/presentation/onboardning_screen/onboarding_screen.dart';
+import 'package:my_tflit_app/presentation/score_screen/controller/score_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ void main() async {
   await PreferenceUtils.init();
   DartPluginRegistrant.ensureInitialized();
   Get.put(ImageController());
+  Get.put(ScoreController());
   runApp(const MyApp());
 }
 

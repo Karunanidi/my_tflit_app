@@ -9,7 +9,7 @@ class ScoreController extends GetxController {
     String existingScoreString = await PreferenceUtils.getString(PreferenceUtils.userScore, '0');
     int existingScore = int.tryParse(existingScoreString) ?? 0;
 
-    int newScore = isCorrect ? existingScore + 10 : existingScore;
+    int newScore = isCorrect ? existingScore + 100 : existingScore;
 
     await PreferenceUtils.setString(PreferenceUtils.userScore, newScore.toString());
     log(newScore.toString());

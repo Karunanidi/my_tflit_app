@@ -5,8 +5,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:my_tflit_app/components/correct_dialog.dart';
 import 'package:my_tflit_app/core/utils/constant.dart';
 
 class ImageController extends GetxController {
@@ -34,14 +32,8 @@ class ImageController extends GetxController {
     );
   }
 
-  Future<void> pickImage(ImageSource source, String object) async {
-    final picker = ImagePicker();
-    final image = await picker.pickImage(source: source);
-    var _object = object;
-
-    if (image == null) return;
-
-    filePath.value = File(image.path);
+  Future<void> processImage(String imagePath, String object) async {
+    filePath.value = File(imagePath);
 
     // Show loading indicator
     isLoading.value = true;
@@ -61,14 +53,15 @@ class ImageController extends GetxController {
     Get.back();
 
     // Run the model on the selected image
-    await _runModelOnImage(image.path, _object);
+    await _runModelOnImage(imagePath, object);
 
     // Hide loading indicator
     isLoading.value = false;
 
     // Check the confidence level and show dialog if applicable
     if (confidence.value >= 65) {
-      _showResultDialog(_object);
+      // _showResultDialog(object);
+      log('Correct');
     } else {
       Get.snackbar('Warning', 'Image may be blurry, please take again',
           backgroundColor: Colors.white, colorText: Colors.red);
@@ -98,13 +91,13 @@ class ImageController extends GetxController {
     }
   }
 
-  void _showResultDialog(String obj) {
-    bool correct = label.value.toLowerCase() == obj.toLowerCase();
+  // void _showResultDialog(String obj) {
+  //   bool correct = label.value.toLowerCase() == obj.toLowerCase();
 
-    Get.dialog(
-      CorrectDialog(isCorrect: correct),
-    );
-  }
+  //   Get.dialog(
+  //     CorrectDialog(isCorrect: correct),
+  //   );
+  // }
 
   void clearImage() {
     filePath.value = null;
