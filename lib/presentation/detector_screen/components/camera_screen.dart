@@ -4,11 +4,13 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:my_tflit_app/core/utils/appcolors.dart';
 import 'package:my_tflit_app/presentation/detector_screen/controller/image_controller.dart';
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({super.key, required this.item});
+  const CameraScreen({super.key, required this.item, required this.emoji});
   final String item;
+  final String emoji;
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -41,7 +43,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   void _initializeCamera() async {
     _cameras = await availableCameras();
-    _controller = CameraController(_cameras![0], ResolutionPreset.medium);
+    _controller = CameraController(_cameras![0], ResolutionPreset.high,
+        enableAudio: false);
     await _controller?.initialize();
     setState(() {
       _isInitialized = true;
@@ -106,7 +109,7 @@ class _CameraScreenState extends State<CameraScreen> {
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      'Item: ${widget.item} 🍋',
+                      'Item: ${widget.item} ${widget.emoji}',
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -124,8 +127,12 @@ class _CameraScreenState extends State<CameraScreen> {
               bottom: 20,
               left: MediaQuery.of(context).size.width / 2 - 30,
               child: FloatingActionButton(
+                backgroundColor: AppColors.primary,
                 onPressed: _takePicture,
-                child: const Icon(Icons.camera),
+                child: const Icon(
+                  Icons.camera_alt_rounded,
+                  color: AppColors.secondary,
+                ),
               ),
             ),
           ],

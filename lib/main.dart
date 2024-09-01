@@ -16,7 +16,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await PreferenceUtils.init();
   DartPluginRegistrant.ensureInitialized();
   Get.put(ImageController());
@@ -40,5 +40,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 

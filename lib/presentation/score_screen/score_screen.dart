@@ -13,7 +13,7 @@ class ScoreScreen extends StatefulWidget {
 }
 
 class _ScoreScreenState extends State<ScoreScreen> {
-  final ScoreController controller = Get.put(ScoreController());
+  final ScoreController controller = Get.find<ScoreController>();
   final Rx<Color> _textColor = Colors.black.obs;
 
   @override

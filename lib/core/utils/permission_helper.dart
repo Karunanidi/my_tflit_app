@@ -7,7 +7,6 @@ class PermissionsHelper {
   static Future<void> requestMediaPermissions() async {
     final int sdkVersion = await _getSdkVersion();
 
-
     // Android 14 (Upside Down Cake) and above
     if (sdkVersion >= 34) {
       await _requestPermissions([
@@ -30,7 +29,8 @@ class PermissionsHelper {
   }
 
   static Future<int> _getSdkVersion() async {
-    const MethodChannel platform = MethodChannel('com.example.my_tflit_app/PERMISSION');
+    const MethodChannel platform =
+        MethodChannel('com.example.my_tflit_app/PERMISSION');
     try {
       final int sdkVersion = await platform.invokeMethod('getVersion');
       log('sdkVersion: $sdkVersion');

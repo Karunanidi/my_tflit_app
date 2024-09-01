@@ -1,5 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
+// GITHUB RESOURCE_URL
+const String RESOURCE_URL = 'https://raw.githubusercontent.com/Karunanidi/img-resources/main/';
+
 // TFLITE MODEL
 const String FRUIT_TFLITE_MODEL = 'assets/models/fruits-veg.tflite';
 

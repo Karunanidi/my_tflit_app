@@ -1,9 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:my_tflit_app/core/utils/appcolors.dart';
-import 'package:my_tflit_app/core/utils/constant.dart';
 import 'package:my_tflit_app/presentation/detector_screen/intro_screen.dart';
 import 'package:my_tflit_app/presentation/onboardning_screen/onboarding_screen.dart';
 import 'package:my_tflit_app/presentation/score_screen/controller/score_controller.dart';
@@ -16,31 +14,25 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-  final ScoreController controller = Get.put(ScoreController());
+  final ScoreController controller = Get.find<ScoreController>();
 
   final List<Map<String, String>> huntOptions = [
     {
       'img':
-          'https://plus.unsplash.com/premium_photo-1671379041175-782d15092945?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          'https://img.freepik.com/free-psd/fruits-still-life-background_23-2151102768.jpg?t=st=1725098038~exp=1725101638~hmac=489fd784b10902c5063153441ecdc04d90ed540a5840e694167f701b2d90ecc3&w=1060',
       'title': 'Fruits Hunt',
     },
     {
       'img':
-          'https://img.freepik.com/premium-vector/search-new-ideas-meeting-brainstorming-business-concept-vector-illustration_114835-151.jpg?w=826',
-      'title': 'coming soon..',
-    },
-    {
-      'img':
-          'https://img.freepik.com/premium-vector/search-new-ideas-meeting-brainstorming-business-concept-vector-illustration_114835-151.jpg?w=826',
+          'https://img.freepik.com/free-photo/gift-voucher-3d-rendering_23-2149174193.jpg?t=st=1725097951~exp=1725101551~hmac=f4a42ca87c70425d3e14bdb52e9aa7637232e03fd2b27a848f2a5826d8af08da&w=1060',
       'title': 'coming soon..',
     },
   ];
 
   final List<String> carouselImages = [
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+    'https://img.freepik.com/free-photo/white-bengal-tiger-wilderness_23-2151528275.jpg?t=st=1725098552~exp=1725102152~hmac=752075bf9027df8275b51c0261a6b4b763249f1d1e7bee9a5dece1cc117b1725&w=1060',
+    'https://img.freepik.com/free-photo/gift-voucher-3d-rendering_23-2149174193.jpg?t=st=1725097951~exp=1725101551~hmac=f4a42ca87c70425d3e14bdb52e9aa7637232e03fd2b27a848f2a5826d8af08da&w=1060',
+    'https://img.freepik.com/free-psd/fruits-still-life-background_23-2151102768.jpg?t=st=1725098038~exp=1725101638~hmac=489fd784b10902c5063153441ecdc04d90ed540a5840e694167f701b2d90ecc3&w=1060',
   ];
 
   int _currentCarouselIndex = 0;
@@ -79,7 +71,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           centerTitle: true,
           leading: const SizedBox(),
           title: const Text(
-            'Home Page',
+            'Hunter',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -97,7 +89,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                         children: [
                           Obx(
                             () => Text(
-                              'Points : ${controller.score.value}',
+                              'Points 🪙 : ${controller.score.value}',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 14.0),
                             ),
@@ -106,11 +98,14 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    const Center(
-                      child: Text(
-                        'Oportet uti solum de actibus prosecutionem et fugam, haec leniter et blandus et reservato.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16.0),
+                    Center(
+                      child: Container(
+                        margin: const EdgeInsets.all(20),
+                        child: const Text(
+                          'Welcome Hunter! join the challenges, you will have a lots of fun',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16.0),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20.0),
@@ -135,7 +130,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(16.0),
                                   child: Image.network(
-                                    IMG_DUMMY,
+                                    image,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -166,6 +161,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                         onPressed: () {
                                           Get.showSnackbar(const GetSnackBar(
                                             message: 'soon available',
+                                            duration:
+                                                Duration(milliseconds: 1500),
                                           ));
                                         },
                                         child: const Text('Let\'s Try'),
@@ -256,12 +253,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
         if (title.toLowerCase() == 'fruits hunt') {
           Get.to(() => const IntroScreen());
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(milliseconds: 1500),
-              content: Text(title),
-            ),
-          );
+          Get.showSnackbar(GetSnackBar(
+            message: title,
+            duration: const Duration(milliseconds: 1500),
+          ));
         }
       },
       child: Card(

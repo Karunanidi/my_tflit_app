@@ -1,0 +1,8 @@
+0 Ankylosaurus
+1 Brachiosaurus
+2 Dilophosaurus
+3 T-Rex
+4 Triceratops
+5 Velociraptor
+6 Parasaurolophus
+7 Spinosaurus
