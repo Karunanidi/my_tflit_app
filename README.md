@@ -83,4 +83,4 @@ Contributions are welcome! If you have ideas for new features, categories, or im
 
 ## 📧 Contact
 
-For more information or support, reach out to the developer at [your-email@example.com].
+For more information or support, reach out to the developer at [trisna.na@gmail.com].
